@@ -9,7 +9,8 @@
     "test": "jest",
     "lint": "eslint .",
     "check-types": "tsc",
-    "check-types:watch": "tsc --watch"
+    "check-types:watch": "tsc --watch",
+    "generate": "plop --plopfile generators/index.js"
   },
   "husky": {
     "hooks": {
@@ -41,6 +42,7 @@
     "husky": "^4.2.5",
     "jest": "^26.1.0",
     "metro-react-native-babel-preset": "^0.60.0",
+    "plop": "^2.7.1",
     "react-test-renderer": "16.11.0",
     "typescript": "^3.9.6"
   },
