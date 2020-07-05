@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  descirption: 'Create component in reactjs',
+  descirption: 'Create component in react native',
   prompts: [
     {
       type: 'input',
@@ -12,7 +12,7 @@ module.exports = {
     {
       type: 'input',
       name: 'module',
-      message: 'Whats your name page?',
+      message: 'Whats your name screen?',
       default: 'Default',
     },
     {
