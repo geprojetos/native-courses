@@ -1,9 +1,9 @@
 // const sharedGenerator = require('./shared');
+const screenGenerator = require('./screens');
 const componentGenerator = require('./components');
-// const pageGenerator = require('./pages');
 
 module.exports = (plop) => {
   // plop.setGenerator('shared-component', sharedGenerator);
-  plop.setGenerator('page-component', componentGenerator);
-  // plop.setGenerator('page', pageGenerator);
+  plop.setGenerator('screens', screenGenerator);
+  plop.setGenerator('screens-components', componentGenerator);
 };
