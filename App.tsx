@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React, { FC } from 'react';
+import React, {FC} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -23,8 +23,9 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import Storybook from './storybook';
 
-const App: FC = () => {
+const Root: FC = () => {
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -105,5 +106,10 @@ const styles = StyleSheet.create({
     textAlign: 'right',
   },
 });
+
+const STORYBOOK_START = true;
+let App: any = null;
+
+STORYBOOK_START ? (App = Storybook) : (App = Root);
 
 export default App;
