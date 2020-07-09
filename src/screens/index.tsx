@@ -1,5 +1,7 @@
 // imports
+import Home from './Home';
 
-export default {
+export {
   // exports
+  Home,
 };

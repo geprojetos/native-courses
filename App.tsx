@@ -107,7 +107,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const STORYBOOK_START = true;
+const STORYBOOK_START = false;
 let App: any = null;
 
 STORYBOOK_START ? (App = Storybook) : (App = Root);
