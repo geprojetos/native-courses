@@ -45,6 +45,12 @@ module.exports = {
         abortOnFail: true,
       },
       {
+        type: 'add',
+        path: `../src/shared/{{properCase name}}/index.stories.tsx`,
+        templateFile: `./shared/function/index.stories.hbs`,
+        abortOnFail: true,
+      },
+      {
         type: 'append',
         path: `../src/shared/index.tsx`,
         pattern: '// imports',
@@ -56,6 +62,13 @@ module.exports = {
         path: `../src/shared/index.tsx`,
         pattern: '// exports',
         template: `  {{properCase name}},`,
+        abortOnFail: true,
+      },
+      {
+        type: 'append',
+        path: `../storybook/stories/index.js`,
+        pattern: '// imports',
+        template: `import '../../src/shared/{{properCase name}}/index.stories';`,
         abortOnFail: true,
       },
     ];

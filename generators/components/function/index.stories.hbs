@@ -1,0 +1,14 @@
+import React, {FC} from 'react';
+import {Text} from 'react-native';
+import {storiesOf} from '@storybook/react-native';
+import CenterView from '../../../../../storybook/stories/CenterView';
+
+export interface {{pascalCase name}}Props { }
+
+export const {{pascalCase name}}: FC<{{pascalCase name}}Props> = ({}) => <Text>{{pascalCase name}}</Text>;
+
+{{pascalCase name}}.defaultProps = {};
+
+storiesOf('{{pascalCase name}}', module)
+  .addDecorator((getStory: any) => <CenterView>{getStory()}</CenterView>)
+  .add('{{lowerCase name}}', () => <{{pascalCase name}} />)

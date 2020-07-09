@@ -50,6 +50,19 @@ module.exports = {
         templateFile: `./components/function/index.spec.hbs`,
         abortOnFail: true,
       },
+      {
+        type: 'add',
+        path: `../src/screens/{{properCase module}}/components/{{properCase name}}/index.stories.tsx`,
+        templateFile: `./components/function/index.stories.hbs`,
+        abortOnFail: true,
+      },
+      {
+        type: 'append',
+        path: `../storybook/stories/index.js`,
+        pattern: '// imports',
+        template: `import '../../src/screens/{{properCase module}}/components/{{properCase name}}/index.stories';`,
+        abortOnFail: true,
+      },
     ];
     return actions;
   },

@@ -34,6 +34,7 @@
     "@commitlint/config-conventional": "^9.0.1",
     "@react-native-community/eslint-config": "^2.0.0",
     "@storybook/addon-actions": "^5.3.19",
+    "@storybook/addon-info": "^5.3.19",
     "@storybook/addon-links": "^5.3.19",
     "@storybook/addons": "^5.3.19",
     "@storybook/react-native": "^5.3.19",
