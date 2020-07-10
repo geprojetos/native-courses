@@ -4,14 +4,15 @@ import {
   Text,
 } from 'react-native';
 
-import styles from './index'
+import {t} from '../../i18n';
+import styles from './index';
 
 export interface {{pascalCase name}}Props { }
 
 const {{pascalCase name}}: FC<{{pascalCase name}}Props> = () => {
   return (
     <View style={styles.container}>
-      <Text>{{pascalCase name}}</Text>
+      <Text>{t('{{lowerCase name}}:{{lowerCase name}}')}</Text>
     </View>
   );
 };
