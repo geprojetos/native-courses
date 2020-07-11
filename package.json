@@ -6,7 +6,8 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
-    "test": "jest",
+    "test": "jest --verbose",
+    "test:watch": "jest --watch",
     "lint": "eslint .",
     "check-types": "tsc",
     "check-types:watch": "tsc --watch",
@@ -30,6 +31,8 @@
   },
   "devDependencies": {
     "@babel/core": "^7.10.4",
+    "@babel/preset-react": "^7.10.4",
+    "@babel/preset-typescript": "^7.10.4",
     "@babel/runtime": "^7.10.4",
     "@commitlint/cli": "^9.0.1",
     "@commitlint/config-conventional": "^9.0.1",
@@ -45,6 +48,7 @@
     "@types/react": "^16.9.41",
     "@types/react-native": "^0.62.16",
     "@types/react-test-renderer": "^16.9.2",
+    "@types/storybook__react": "^5.2.1",
     "babel-jest": "^26.1.0",
     "babel-loader": "^8.1.0",
     "cz-conventional-changelog": "^3.2.0",
@@ -53,13 +57,16 @@
     "eslint": "^7.4.0",
     "husky": "^4.2.5",
     "jest": "^26.1.0",
+    "jest-sonar-reporter": "^2.0.0",
     "metro-react-native-babel-preset": "^0.60.0",
     "plop": "^2.7.1",
     "react-dom": "16.11.0",
     "react-test-renderer": "16.11.0",
     "typescript": "^3.1.6"
   },
-  "jest": {
-    "preset": "react-native"
+  "jestSonar": {
+    "reportPath": "coverage",
+    "reportFile": "clover.xml",
+    "indent": 4
   }
 }

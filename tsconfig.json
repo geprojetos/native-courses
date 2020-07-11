@@ -64,10 +64,6 @@
     "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */,
     "resolveJsonModule": true
   },
-  "exclude": [
-    "node_modules",
-    "babel.config.js",
-    "metro.config.js",
-    "jest.config.js"
-  ]
+  "include": ["./src/**/*"],
+  "exclude": ["./node_modules/**", "./jest.config.js", "./src/**/*.spec.tsx"]
 }

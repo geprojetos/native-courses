@@ -34,7 +34,7 @@ module.exports = {
       },
       {
         type: 'add',
-        path: `../src/screens/{{properCase name}}/index.ts`,
+        path: `../src/screens/{{properCase name}}/styles.ts`,
         templateFile: `./screens/function/index.style.hbs`,
         abortOnFail: true,
       },

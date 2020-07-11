@@ -34,7 +34,7 @@ module.exports = {
       },
       {
         type: 'add',
-        path: `../src/shared/{{properCase name}}/index.ts`,
+        path: `../src/shared/{{properCase name}}/styles.ts`,
         templateFile: `./shared/function/index.style.hbs`,
         abortOnFail: true,
       },
@@ -46,7 +46,7 @@ module.exports = {
       },
       {
         type: 'add',
-        path: `../src/shared/{{properCase name}}/index.stories.tsx`,
+        path: `../src/shared/{{properCase name}}/{{lowerCase name}}.stories.tsx`,
         templateFile: `./shared/function/index.stories.hbs`,
         abortOnFail: true,
       },

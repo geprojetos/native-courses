@@ -7,7 +7,7 @@ import {{pascalCase name}} from './index';
 describe('[{{pascalCase name}}], test', () => {
   const wrapper = mount(<{{pascalCase name}} />);
 
-it('[{{pascalCase name}}] renders correctly', () => {
-    expect(wrapper.exists());
+  it('[{{pascalCase name}}] renders correctly', () => {
+    expect(wrapper.exists()).toBeTruthy();
   });
 })

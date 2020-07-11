@@ -40,7 +40,7 @@ module.exports = {
       },
       {
         type: 'add',
-        path: `../src/screens/{{properCase module}}/components/{{properCase name}}/index.ts`,
+        path: `../src/screens/{{properCase module}}/components/{{properCase name}}/styles.ts`,
         templateFile: `./components/function/index.style.hbs`,
         abortOnFail: true,
       },
@@ -52,7 +52,7 @@ module.exports = {
       },
       {
         type: 'add',
-        path: `../src/screens/{{properCase module}}/components/{{properCase name}}/index.stories.tsx`,
+        path: `../src/screens/{{properCase module}}/components/{{properCase name}}/{{lowerCase name}}.stories.tsx`,
         templateFile: `./components/function/index.stories.hbs`,
         abortOnFail: true,
       },
