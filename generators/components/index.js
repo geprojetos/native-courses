@@ -11,7 +11,13 @@ module.exports = {
     },
     {
       type: 'input',
-      name: 'module',
+      name: 'navigator',
+      message: 'Whats your name navigator?',
+      default: 'Default',
+    },
+    {
+      type: 'input',
+      name: 'screen',
       message: 'Whats your name screen?',
       default: 'Default',
     },
@@ -34,25 +40,25 @@ module.exports = {
     actions = [
       {
         type: 'add',
-        path: `../src/screens/{{properCase module}}/components/{{properCase name}}/index.tsx`,
+        path: `../src/navigators/{{lowerCase navigator}}/screens/{{properCase screen}}/components/{{properCase name}}/index.tsx`,
         templateFile: `./components/function/index.js.hbs`,
         abortOnFail: true,
       },
       {
         type: 'add',
-        path: `../src/screens/{{properCase module}}/components/{{properCase name}}/styles.ts`,
+        path: `../src/navigators/{{lowerCase navigator}}/screens/{{properCase screen}}/components/{{properCase name}}/styles.ts`,
         templateFile: `./components/function/index.style.hbs`,
         abortOnFail: true,
       },
       {
         type: 'add',
-        path: `../src/screens/{{properCase module}}/components/{{properCase name}}/index.spec.tsx`,
+        path: `../src/navigators/{{lowerCase navigator}}/screens/{{properCase screen}}/components/{{properCase name}}/{{lowerCase name}}.spec.tsx`,
         templateFile: `./components/function/index.spec.hbs`,
         abortOnFail: true,
       },
       {
         type: 'add',
-        path: `../src/screens/{{properCase module}}/components/{{properCase name}}/{{lowerCase name}}.stories.tsx`,
+        path: `../src/navigators/{{lowerCase navigator}}/screens/{{properCase screen}}/components/{{properCase name}}/{{lowerCase name}}.stories.tsx`,
         templateFile: `./components/function/index.stories.hbs`,
         abortOnFail: true,
       },
@@ -60,7 +66,7 @@ module.exports = {
         type: 'append',
         path: `../storybook/stories/index.js`,
         pattern: '// imports',
-        template: `import '../../src/screens/{{properCase module}}/components/{{properCase name}}/index.stories';`,
+        template: `import '../../src/navigators/{{lowerCase navigator}}/screens/{{properCase screen}}/components/{{properCase name}}/{{lowerCase name}}.stories';`,
         abortOnFail: true,
       },
     ];
