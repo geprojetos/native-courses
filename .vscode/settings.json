@@ -3,7 +3,7 @@
     "node_modules": true,
     "android": true,
     "ios": true,
-    "generators": false
+    "generators": true
   },
   "editor.tabSize": 2,
   "editor.formatOnSave": true
