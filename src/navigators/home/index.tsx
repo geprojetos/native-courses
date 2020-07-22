@@ -1,10 +1,13 @@
-import HomeScreen from './pages/Page1';
+// imports
+import Welcome from './screens/Welcome';
 
-const homeNavigators = [
+const homeScreens = [
+  // export
+
   {
-    name: 'Home',
-    component: HomeScreen,
+    name: 'Welcome',
+    component: Welcome,
   },
 ];
 
-export default homeNavigators;
+export default homeScreens;

@@ -63,12 +63,13 @@
     "skipLibCheck": true /* Skip type checking of declaration files. */,
     "forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */,
     "resolveJsonModule": true,
-    "baseUrl": "src",
+    "baseUrl": "./",
     "paths": {
-      "@navigators/*": ["navigators/*"],
-      "@shared/*": ["shared/*"],
-      "@i18n/*": ["/*"],
-      "@translations/*": ["translations/*"]
+      // "navigators/*": ["./src/navigators/*"],
+      // "shared/*": ["./src/shared/*"],
+      // "i18n/*": ["./src/*"],
+      // "translations/*": ["./src/translations/*"],
+      // "utils/*": ["./src/utils/*"]
     }
   },
   "include": ["./src/**/*"],

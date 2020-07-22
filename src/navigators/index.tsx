@@ -3,22 +3,18 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
 // imports
-import homeRoutes from './home';
+import homeScreens from './home';
+import categoriesScreens from './categories';
 
-type appNagivatorProps = (
-  | {
-      name: string;
-      component: ({navigation}: any) => JSX.Element;
-    }
-  | {
-      name: string;
-      component: () => JSX.Element;
-    }
-)[];
+type appNagivatorProps = {
+  name: string;
+  component: React.FC<{}>;
+}[];
 
 const appNagivator: appNagivatorProps = [
   // exports
-  ...homeRoutes,
+  ...homeScreens,
+  ...categoriesScreens,
 ];
 
 const Stack = createStackNavigator();
@@ -26,7 +22,7 @@ const Stack = createStackNavigator();
 const RootNativator = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator headerMode="none">
         {appNagivator.map((item, index) => (
           <Stack.Screen
             key={index}

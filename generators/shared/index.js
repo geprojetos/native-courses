@@ -68,7 +68,7 @@ module.exports = {
         type: 'append',
         path: `../storybook/stories/index.js`,
         pattern: '// imports',
-        template: `import '../../src/shared/{{properCase name}}/index.stories';`,
+        template: `import '../../src/shared/{{properCase name}}/{{lowerCase name}}.stories';`,
         abortOnFail: true,
       },
     ];
