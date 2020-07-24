@@ -1,30 +1,29 @@
+import React from 'react';
 import {StackNavigationOptions} from '@react-navigation/stack';
 import {Text} from 'react-native';
+import IconBack from '../shared/IconBack';
 
 export interface HeaderOptions {
-  back: StackNavigationOptions;
+  none: StackNavigationOptions;
+  backDefault: StackNavigationOptions;
 }
 
 export const headerOptions: HeaderOptions = {
-  back: {
+  none: {
     header: () => <></>,
-    headerLeft: () => <Text></Text>,
-    headerTitle: () => <></>,
+  },
+  backDefault: {
+    headerLeft: () => <IconBack />,
     cardStyle: {
       backgroundColor: 'white',
     },
     headerStyle: {
-      elevation: 0,
-      shadowOpacity: 0,
       borderBottomWidth: 1,
-      borderBottomColor: `blue`,
+      borderBottomColor: `black`,
     },
     headerTitleAlign: 'center',
     headerTitleStyle: {
       textAlign: 'center',
-      alignSelf: 'center',
-      justifyContent: 'center',
-      flex: 1,
     },
   },
 };

@@ -1,12 +1,16 @@
 // imports
 import Welcome from './screens/Welcome';
 
-const homeScreens = [
+import {headerOptions} from '../header.constant';
+import {appNagivatorProps} from '..';
+
+const homeScreens: appNagivatorProps = [
   // export
 
   {
-    name: 'Welcome',
+    name: 'Welcome1',
     component: Welcome,
+    options: headerOptions.none,
   },
 ];
 
