@@ -3,15 +3,16 @@ import Welcome from './screens/Welcome';
 
 import {headerOptions} from '../header.constant';
 import {appNagivatorProps} from '..';
+import {ScreensNames} from '../../utils/screens';
 
 const homeScreens: appNagivatorProps = [
   // export
 
   {
-    name: 'Welcome1',
+    name: ScreensNames.welcome,
     component: Welcome,
-    options: headerOptions.none,
-  },
+    options: headerOptions.none
+  }
 ];
 
 export default homeScreens;

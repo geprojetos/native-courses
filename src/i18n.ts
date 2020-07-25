@@ -8,7 +8,7 @@ import {
 
 i18next.init({
   interpolation: {
-    escapeValue: false,
+    escapeValue: false
   },
   lng: 'en',
   resources: {
@@ -16,17 +16,16 @@ i18next.init({
       // en
       home,
       categories,
-      common,
-    },
-  },
+      common
+    }
+  }
 });
 
 function t(key: string, options?: any) {
   if (!!options) {
     return i18next.t(key, options);
-  } else {
-    return i18next.t(key);
   }
+  return i18next.t(key);
 }
 
 export {t};

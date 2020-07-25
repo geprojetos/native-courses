@@ -1,0 +1,27 @@
+{
+  "project": "./tsconfig.json",
+  "extends": [
+    "tslint:recommended",
+    "tslint-config-airbnb",
+    "tslint-config-prettier"
+  ],
+  "rules": {
+    "function-name": false,
+    "variable-name": false,
+    "import-name": false,
+    "ter-arrow-parens": [true, "as-needed"],
+    "align": [true, "parameters", "statements"],
+    "trailing-comma": [
+      true,
+      {
+        "singleline": "never",
+        "multiline": {
+          "objects": "never",
+          "arrays": "never",
+          "functions": "never",
+          "typeLiterals": "ignore"
+        }
+      }
+    ]
+  }
+}

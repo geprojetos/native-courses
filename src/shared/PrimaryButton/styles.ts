@@ -10,11 +10,11 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     flex: 1,
     padding: 15,
-    margin: 5,
+    margin: 5
   },
   buttonText: {
-    color: colors.WHITE_PRIMARY,
-  },
+    color: colors.WHITE_PRIMARY
+  }
 });
 
 export default styles;

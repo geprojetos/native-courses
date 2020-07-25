@@ -3,10 +3,10 @@ import {Text} from 'react-native';
 import {storiesOf} from '@storybook/react-native';
 import CenterView from '../../../storybook/stories/CenterView';
 
-export const IconBack: FC = ({}) => <Text>IconBack</Text>;
+export const ListItem: FC = ({}) => <Text>ListItem</Text>;
 
-IconBack.defaultProps = {};
+ListItem.defaultProps = {};
 
-storiesOf('IconBack', module)
+storiesOf('ListItem', module)
   .addDecorator((getStory: any) => <CenterView>{getStory()}</CenterView>)
-  .add('iconback', () => <IconBack />);
+  .add('listitem', () => <ListItem />);

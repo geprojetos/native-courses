@@ -1,15 +1,16 @@
 // imports
-import List from './screens/List';
 import {appNagivatorProps} from '..';
 import {headerOptions} from '../header.constant';
+import {ScreensNames} from '../../utils/screens';
+import List from './screens/List';
 
 const categoriesScreens: appNagivatorProps = [
   // export
   {
-    name: 'ListCategories',
+    name: ScreensNames.listCategories,
     component: List,
-    options: headerOptions.backDefault,
-  },
+    options: headerOptions.backDefault
+  }
 ];
 
 export default categoriesScreens;

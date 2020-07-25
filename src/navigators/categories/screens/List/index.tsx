@@ -1,19 +1,39 @@
 import React, {FC} from 'react';
-import {View, Text, Button} from 'react-native';
-
-import {t} from '../../../../i18n';
-import styles from './styles';
+import {View, TouchableOpacity} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 
-export interface ListProps {}
+import styles from './styles';
+import ListItem from '../../../../shared/ListItem';
+import {ScreensNames} from '../../../../utils/screens';
+import Icon from 'react-native-vector-icons/FontAwesome5';
+import {colors} from '../../../../utils/styles';
 
-const List: FC<ListProps> = () => {
+const List: FC = () => {
   const navigation = useNavigation();
-
+  const data: any = [
+    {
+      id: '1',
+      value: 'Value 1'
+    },
+    {
+      id: '2',
+      value: 'Value 2'
+    },
+    {
+      id: '3',
+      value: 'Value 3'
+    }
+  ];
   return (
     <View style={styles.container}>
-      <Button title="Voltar" onPress={() => navigation.goBack()} />
-      <Text>{t('categories:categories')}</Text>
+      <TouchableOpacity style={styles.iconAdd}>
+        <Icon name="plus-circle" color={colors.GREEN_PRIMARY} size={34} />
+      </TouchableOpacity>
+      <ListItem
+        data={data}
+        icons={true}
+        onPressTrash={() => navigation.navigate(ScreensNames.welcome)}
+      />
     </View>
   );
 };

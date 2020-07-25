@@ -6,9 +6,7 @@ import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {colors} from '../../utils/styles';
 
-export interface IconBackProps {}
-
-const IconBack: FC<IconBackProps> = () => {
+const IconBack: FC = () => {
   const navigation = useNavigation();
 
   const handleBack = () => {
@@ -17,7 +15,7 @@ const IconBack: FC<IconBackProps> = () => {
 
   return (
     <TouchableOpacity style={styles.container} onPress={handleBack}>
-      <Icon name="chevron-left" size={18} color={colors.BLUE_PRIMARY} />
+      <Icon name="chevron-left" size={24} color={colors.BLUE_PRIMARY} />
     </TouchableOpacity>
   );
 };

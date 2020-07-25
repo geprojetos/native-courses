@@ -19,7 +19,7 @@ export type appNagivatorProps = {
 const appNagivator: appNagivatorProps = [
   // exports
   ...homeScreens,
-  ...categoriesScreens,
+  ...categoriesScreens
 ];
 
 const Stack = createStackNavigator();
