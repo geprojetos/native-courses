@@ -9,17 +9,18 @@
     "function-name": false,
     "variable-name": false,
     "import-name": false,
+
     "ter-arrow-parens": [true, "as-needed"],
     "align": [true, "parameters", "statements"],
     "trailing-comma": [
-      true,
+      false,
       {
-        "singleline": "never",
+        "singleline": "as-needed",
         "multiline": {
-          "objects": "never",
-          "arrays": "never",
-          "functions": "never",
-          "typeLiterals": "ignore"
+          "objects": "as-needed",
+          "arrays": "as-needed",
+          "functions": "as-needed",
+          "typeLiterals": "as-needed"
         }
       }
     ]

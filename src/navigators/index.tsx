@@ -6,8 +6,8 @@ import {
 } from '@react-navigation/stack';
 
 // imports
-import homeScreens from './home';
 import categoriesScreens from './categories';
+import homeScreens from './home';
 import {Text} from 'react-native';
 
 export type appNagivatorProps = {

@@ -1,8 +1,8 @@
 import i18next from 'i18next';
 import {
   // imports
-  home,
   categories,
+  home,
   common,
 } from './translations/translations';
 
@@ -14,8 +14,8 @@ i18next.init({
   resources: {
     en: {
       // en
-      home,
       categories,
+      home,
       common
     }
   }

@@ -1,4 +1,6 @@
 export enum ScreensNames {
   welcome = 'Welcome',
-  listCategories = 'List Categories'
+  listCategories = 'List Categories',
+  editCategories = 'Edit Categories',
+  addCategories = 'Add Categories',
 }
