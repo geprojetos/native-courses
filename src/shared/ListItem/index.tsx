@@ -6,8 +6,14 @@ import styles from './styles';
 import {colors} from '../../utils/styles';
 import {t} from '../../i18n';
 
+export interface ListCategoriesProps {
+  _id: string;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
+}
 export interface ListItemProps {
-  data: any;
+  data: ListCategoriesProps[];
   icons?: boolean;
   onPressEdit?: () => void;
   onPressTrash?: () => void;
@@ -17,7 +23,7 @@ const ListItem: FC<ListItemProps> = ({
   data,
   icons,
   onPressEdit,
-  onPressTrash
+  onPressTrash,
 }) => {
   const handleOnPressEdit = onPressEdit;
   const handleOnPressTrash = onPressTrash;
@@ -30,7 +36,7 @@ const ListItem: FC<ListItemProps> = ({
           renderItem={({item}) => (
             <View style={styles.flat}>
               <View style={styles.flatTextWrapper}>
-                <Text style={styles.flatText}>{item.value}</Text>
+                <Text style={styles.flatText}>{item.name}</Text>
               </View>
 
               {icons && (
