@@ -1,3 +1,3 @@
-import {get} from './categories';
+import {getCategories} from './categories';
 
-export {get};
+export {getCategories};

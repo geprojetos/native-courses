@@ -3,7 +3,7 @@ import {View, TouchableOpacity, Text} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
-import {get} from '../../../../services';
+import {getCategories} from '../../../../services';
 import {colors} from '../../../../utils/styles';
 import {ScreensNames} from '../../../../utils/screens';
 import styles from './styles';
@@ -21,9 +21,9 @@ const List: FC = () => {
     navigation.navigate(ScreensNames.editCategories);
   };
 
-  const getCategories = async () => {
+  const listCategories = async () => {
     try {
-      const response = await get('/categories');
+      const response = await getCategories('/categories');
       setCategories(response);
     } catch (error) {
       setError(error);
@@ -31,7 +31,7 @@ const List: FC = () => {
   };
 
   useEffect(() => {
-    getCategories();
+    listCategories();
   }, []);
   return (
     <View style={styles.container}>
@@ -47,8 +47,7 @@ const List: FC = () => {
           <ListItem
             data={categories}
             icons={true}
-            onPressTrash={() => navigation.navigate(ScreensNames.welcome)}
-            onPressEdit={handleNavigationEdit}
+            editNativateTo={ScreensNames.editCategories}
           />
         </>
       )}
