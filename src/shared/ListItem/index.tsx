@@ -18,8 +18,6 @@ export interface ListItemProps {
   icons?: boolean;
   editNativateTo?: string;
   onPressTrash?: string;
-  // onPressEdit?: (data: ListCategoriesProps) => void;
-  // onPressTrash?: (data: ListCategoriesProps) => void;
 }
 
 const ListItem: FC<ListItemProps> = ({
@@ -72,40 +70,6 @@ const ListItem: FC<ListItemProps> = ({
           )}
         />
       ) : (
-        // <View>
-        //   {data.map((item, index) => {
-        //     return (
-        //       <View style={styles.flat} key={index}>
-        //         <View style={styles.flatTextWrapper}>
-        //           <Text style={styles.flatText}>{item.name}</Text>
-        //         </View>
-
-        //         {icons && (
-        //           <View style={styles.flatIconsWrapper}>
-        //             <TouchableOpacity
-        //               style={styles.flatTouch}
-        //               onPress={handleOnPressEdit}>
-        //               <Icon
-        //                 name="edit"
-        //                 color={colors.BLUE_SECONDARY}
-        //                 size={24}
-        //               />
-        //             </TouchableOpacity>
-        //             <TouchableOpacity
-        //               style={[styles.flatTouch, styles.flatTouchTrash]}
-        //               onPress={() => handleOnPressTrash}>
-        //               <Icon
-        //                 name="trash-alt"
-        //                 color={colors.RED_PRIMARY}
-        //                 size={24}
-        //               />
-        //             </TouchableOpacity>
-        //           </View>
-        //         )}
-        //       </View>
-        //     );
-        //   })}
-        // </View>
         <View style={styles.notItems}>
           <Text style={styles.notItemsText}>{t('common:description')}</Text>
         </View>

@@ -9,6 +9,7 @@ import {useRoute, useNavigation} from '@react-navigation/native';
 import {ListCategoriesProps} from 'shared/ListItem';
 import {colors} from '../../../../utils/styles';
 import {ScreensNames} from '../../../../utils/screens';
+import {Input} from '../../../../shared';
 
 export interface EditProps {
   name?: string;
@@ -46,19 +47,48 @@ const Edit: FC<EditProps> = () => {
         validateOnMount={true}
         validationSchema={validationSchema}>
         {({handleChange, values, handleBlur, handleSubmit}) => (
-          <TextInput
-            placeholder="name"
-            returnKeyType="done"
-            keyboardType="default"
-            autoCapitalize="none"
-            onChangeText={handleChange('name')}
-            onBlur={handleBlur('name')}
-            value={values.name}
-            onSubmitEditing={() => handleSubmit()}
-            style={{
-              backgroundColor: colors.WHITE_PRIMARY,
-            }}
-          />
+          <>
+            <Input
+              label="teste"
+              placeholder="name"
+              returnKeyType="done"
+              keyboardType="default"
+              autoCapitalize="none"
+              onChangeText={handleChange('name')}
+              onBlur={handleBlur('name')}
+              value={values.name}
+              onSubmitEditing={() => handleSubmit()}
+            />
+            {/* <View style={{marginHorizontal: 15, marginBottom: 15}}>
+              <Text
+                style={{
+                  color: colors.BLUE_PRIMARY,
+                  fontWeight: '600',
+                  marginBottom: 4,
+                }}>
+                Name
+              </Text>
+              <TextInput
+                placeholder="name"
+                returnKeyType="done"
+                keyboardType="default"
+                autoCapitalize="none"
+                onChangeText={handleChange('name')}
+                onBlur={handleBlur('name')}
+                value={values.name}
+                onSubmitEditing={() => handleSubmit()}
+                style={{
+                  backgroundColor: colors.WHITE_PRIMARY,
+                  color: colors.BLUE_PRIMARY,
+                  fontWeight: '600',
+                  paddingHorizontal: 15,
+                  borderColor: colors.GRAY_SECONDARY,
+                  borderWidth: 1,
+                  borderRadius: 4,
+                }}
+              />
+            </View> */}
+          </>
         )}
       </Formik>
     </View>
