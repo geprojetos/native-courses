@@ -5,14 +5,15 @@ import styles from './styles';
 
 export interface InputProps extends TextInputProps {
   label?: string;
+  error?: string;
 }
 
-const Input: FC<InputProps> = ({label, ...props}) => {
+const Input: FC<InputProps> = ({label, error, ...props}) => {
   return (
-    <View style={styles.control}>
+    <View>
       {label && <Text style={styles.label}>{label}</Text>}
-
       <TextInput {...props} style={styles.input} />
+      {error && <Text style={styles.error}>{error}</Text>}
     </View>
   );
 };

@@ -8,13 +8,12 @@ const styles = StyleSheet.create({
     borderColor: colors.BLUE_SECONDARY,
     alignItems: 'center',
     borderRadius: 10,
-    flex: 1,
     padding: 15,
-    margin: 5
+    height: 50,
   },
   buttonText: {
-    color: colors.WHITE_PRIMARY
-  }
+    color: colors.WHITE_PRIMARY,
+  },
 });
 
 export default styles;

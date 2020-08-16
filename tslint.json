@@ -10,17 +10,17 @@
     "variable-name": false,
     "import-name": false,
 
-    "ter-arrow-parens": [true, "as-needed"],
+    "ter-arrow-parens": [false],
     "align": [true, "parameters", "statements"],
     "trailing-comma": [
       false,
       {
-        "singleline": "as-needed",
+        "singleline": "never",
         "multiline": {
-          "objects": "as-needed",
-          "arrays": "as-needed",
-          "functions": "as-needed",
-          "typeLiterals": "as-needed"
+          "objects": "never",
+          "arrays": "never",
+          "functions": "never",
+          "typeLiterals": "never"
         }
       }
     ]

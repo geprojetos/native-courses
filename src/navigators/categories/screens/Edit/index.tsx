@@ -1,22 +1,23 @@
-import React, {FC} from 'react';
-import {View, Text, TextInput} from 'react-native';
-import {Formik} from 'formik';
+import React, { FC } from 'react';
+import { View } from 'react-native';
+import { Formik } from 'formik';
 import * as Yup from 'yup';
 
-import {t} from '../../../../i18n';
+import { t } from '../../../../i18n';
 import styles from './styles';
-import {useRoute, useNavigation} from '@react-navigation/native';
-import {ListCategoriesProps} from 'shared/ListItem';
-import {colors} from '../../../../utils/styles';
-import {ScreensNames} from '../../../../utils/screens';
-import {Input} from '../../../../shared';
+import { useRoute, useNavigation } from '@react-navigation/native';
+import { ListCategoriesProps } from 'shared/ListItem';
+import { ScreensNames } from '../../../../utils/screens';
+import { Input, Container, PrimaryButton } from '../../../../shared';
+import { putCategories } from '../../../../services';
+import { ActionEnum } from '../List';
 
-export interface EditProps {
-  name?: string;
-}
+type FormEdit = {
+  name: string;
+};
 
-const Edit: FC<EditProps> = () => {
-  const {params} = useRoute();
+const Edit: FC = () => {
+  const { params } = useRoute();
   const navigation = useNavigation();
 
   const valuesParams: ListCategoriesProps = (params as any).params;
@@ -26,30 +27,34 @@ const Edit: FC<EditProps> = () => {
   };
 
   const validationSchema = Yup.object().shape({
-    name: Yup.string().required(t('validationMessages:nameRequired')),
+    name: Yup.string().required(t('categories:nameRequired')),
   });
 
-  const handleSubmitTaxesEdit = (formValues: any) => {
-    navigation.navigate(ScreensNames.listCategories);
+  const handleSubmitTaxesEdit = async (formValues: FormEdit) => {
+    await putCategories('categories', valuesParams._id, formValues.name);
+    navigation.navigate(ScreensNames.listCategories, {
+      screen: ScreensNames.listCategories,
+      params: {
+        status: ActionEnum.update,
+      },
+    });
   };
 
   return (
-    <View style={styles.container}>
-      <Text>{t('categories:categories')}</Text>
-      <Text>{valuesParams._id}</Text>
-      <Text>{valuesParams.name}</Text>
-      <Text>{valuesParams.createdAt}</Text>
-      <Text>{valuesParams.updatedAt}</Text>
-
+    <Container style={{ flex: 1, justifyContent: 'flex-start' }}>
       <Formik
         initialValues={initialValues}
-        onSubmit={() => handleSubmitTaxesEdit(valuesParams)}
+        onSubmit={values => handleSubmitTaxesEdit(values)}
         validateOnMount={true}
         validationSchema={validationSchema}>
-        {({handleChange, values, handleBlur, handleSubmit}) => (
-          <>
+        {({ handleChange, values, handleBlur, handleSubmit, errors }) => (
+          <View
+            style={{
+              justifyContent: 'space-between',
+              flex: 1,
+            }}>
             <Input
-              label="teste"
+              label={t('categories:name')}
               placeholder="name"
               returnKeyType="done"
               keyboardType="default"
@@ -58,40 +63,13 @@ const Edit: FC<EditProps> = () => {
               onBlur={handleBlur('name')}
               value={values.name}
               onSubmitEditing={() => handleSubmit()}
+              error={errors.name && errors.name}
             />
-            {/* <View style={{marginHorizontal: 15, marginBottom: 15}}>
-              <Text
-                style={{
-                  color: colors.BLUE_PRIMARY,
-                  fontWeight: '600',
-                  marginBottom: 4,
-                }}>
-                Name
-              </Text>
-              <TextInput
-                placeholder="name"
-                returnKeyType="done"
-                keyboardType="default"
-                autoCapitalize="none"
-                onChangeText={handleChange('name')}
-                onBlur={handleBlur('name')}
-                value={values.name}
-                onSubmitEditing={() => handleSubmit()}
-                style={{
-                  backgroundColor: colors.WHITE_PRIMARY,
-                  color: colors.BLUE_PRIMARY,
-                  fontWeight: '600',
-                  paddingHorizontal: 15,
-                  borderColor: colors.GRAY_SECONDARY,
-                  borderWidth: 1,
-                  borderRadius: 4,
-                }}
-              />
-            </View> */}
-          </>
+            <PrimaryButton text={t('categories:save')} onPress={handleSubmit} />
+          </View>
         )}
       </Formik>
-    </View>
+    </Container>
   );
 };
 

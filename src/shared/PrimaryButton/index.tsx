@@ -11,9 +11,9 @@ export interface PrimaryButtonProps {
 const PrimaryButton: FC<PrimaryButtonProps> = ({text, onPress}) => {
   return (
     <TouchableOpacity
-      style={styles.button}
       activeOpacity={0.9}
-      onPress={onPress}>
+      onPress={onPress}
+      style={styles.button}>
       <Text style={styles.buttonText}>{text}</Text>
     </TouchableOpacity>
   );

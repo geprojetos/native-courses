@@ -8,17 +8,19 @@ import {colors} from '../../../../utils/styles';
 import {ScreensNames} from '../../../../utils/screens';
 import styles from './styles';
 import ListItem, {ListCategoriesProps} from '../../../../shared/ListItem';
+import {Container} from '../../../../shared';
 
-const List: FC = () => {
+export enum ActionEnum {
+  update = 'update',
+}
+
+const List: FC = ({route}: any) => {
   const [categories, setCategories] = useState<ListCategoriesProps[]>([]);
   const [error, setError] = useState('');
   const navigation = useNavigation();
 
   const handleNavigationAdd = () => {
     navigation.navigate(ScreensNames.addCategories);
-  };
-  const handleNavigationEdit = () => {
-    navigation.navigate(ScreensNames.editCategories);
   };
 
   const listCategories = async () => {
@@ -30,11 +32,19 @@ const List: FC = () => {
     }
   };
 
-  useEffect(() => {
+  const updateListCategories = () => {
     listCategories();
-  }, []);
+    if (route?.params?.params === ActionEnum.update) {
+      route.params.params = '';
+    }
+  };
+
+  useEffect(() => {
+    updateListCategories();
+  }, [route?.params?.params]);
+
   return (
-    <View style={styles.container}>
+    <Container style={{flex: 1, justifyContent: 'flex-start'}}>
       {error ? (
         <Text>{error}</Text>
       ) : (
@@ -51,7 +61,7 @@ const List: FC = () => {
           />
         </>
       )}
-    </View>
+    </Container>
   );
 };
 

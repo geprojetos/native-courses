@@ -5,7 +5,7 @@ import {useNavigation} from '@react-navigation/native';
 import {t} from '../../../../i18n';
 import styles from './styles';
 import {ScreensNames} from '../../../../utils/screens';
-import PrimaryButton from '../../../../shared/PrimaryButton';
+import {PrimaryButton, Container} from '../../../../shared';
 
 const Welcome: FC = () => {
   const navigation = useNavigation();
@@ -14,28 +14,33 @@ const Welcome: FC = () => {
     navigation.navigate(ScreensNames.listCategories);
   return (
     <View style={styles.container}>
-      <View style={styles.headerWrapper}>
+      <Container>
         <Text style={styles.title}>{t('common:title')}</Text>
         <Text style={styles.description}>{t('common:description')}</Text>
-      </View>
+      </Container>
 
-      <View style={styles.logoWrapper}>
-        <Image
-          source={require('../../../../assets/icons/logo.png')}
-          style={styles.logo}
-        />
-      </View>
-
-      <View style={styles.buttonWrapper}>
-        <PrimaryButton
-          text={t('home:buttonCategories')}
-          onPress={handleNavigationCategories}
-        />
-        <PrimaryButton
-          text={t('home:buttonCategories')}
-          onPress={handleNavigationCategories}
-        />
-      </View>
+      <Container>
+        <View style={styles.logoWrapper}>
+          <Image
+            source={require('../../../../assets/icons/logo.png')}
+            style={styles.logo}
+          />
+        </View>
+        <View style={styles.buttonWrapper}>
+          <View style={[styles.button, styles.buttonLelf]}>
+            <PrimaryButton
+              text={t('home:buttonCategories')}
+              onPress={handleNavigationCategories}
+            />
+          </View>
+          <View style={styles.button}>
+            <PrimaryButton
+              text={t('home:buttonCategories')}
+              onPress={handleNavigationCategories}
+            />
+          </View>
+        </View>
+      </Container>
     </View>
   );
 };

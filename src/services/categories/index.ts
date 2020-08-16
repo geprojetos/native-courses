@@ -8,3 +8,12 @@ export const getCategories = async (path: string) => {
     return error;
   }
 };
+
+export const putCategories = async (path: string, id: string, name: string) => {
+  try {
+    const response = await api.put(`/${path}/${id}`, {name});
+    return response.data;
+  } catch (error) {
+    return error;
+  }
+};
