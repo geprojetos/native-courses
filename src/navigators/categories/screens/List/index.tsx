@@ -39,6 +39,10 @@ const List: FC = ({route}: any) => {
     }
   };
 
+  const handleRemoveCategorie = (value: string) => {
+    return value;
+  };
+
   useEffect(() => {
     updateListCategories();
   }, [route?.params?.params]);
@@ -58,6 +62,7 @@ const List: FC = ({route}: any) => {
             data={categories}
             icons={true}
             editNativateTo={ScreensNames.editCategories}
+            onPressTrash={(item) => handleRemoveCategorie(item)}
           />
         </>
       )}

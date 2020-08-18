@@ -17,7 +17,7 @@ export interface ListItemProps {
   data: ListCategoriesProps[];
   icons?: boolean;
   editNativateTo?: string;
-  onPressTrash?: string;
+  onPressTrash?: (id: string) => void;
 }
 
 const ListItem: FC<ListItemProps> = ({
@@ -35,7 +35,6 @@ const ListItem: FC<ListItemProps> = ({
         })
       : navigation.isFocused();
   };
-  const handleOnPressTrash = onPressTrash;
 
   return (
     <View style={styles.container}>
@@ -57,7 +56,7 @@ const ListItem: FC<ListItemProps> = ({
                   </TouchableOpacity>
                   <TouchableOpacity
                     style={[styles.flatTouch, styles.flatTouchTrash]}
-                    onPress={() => handleOnPressTrash}>
+                    onPress={() => onPressTrash && onPressTrash(item._id)}>
                     <Icon
                       name="trash-alt"
                       color={colors.RED_PRIMARY}

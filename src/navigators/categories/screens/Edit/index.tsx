@@ -1,23 +1,23 @@
-import React, { FC } from 'react';
-import { View } from 'react-native';
-import { Formik } from 'formik';
+import React, {FC} from 'react';
+import {View} from 'react-native';
+import {Formik} from 'formik';
 import * as Yup from 'yup';
 
-import { t } from '../../../../i18n';
+import {t} from '../../../../i18n';
 import styles from './styles';
-import { useRoute, useNavigation } from '@react-navigation/native';
-import { ListCategoriesProps } from 'shared/ListItem';
-import { ScreensNames } from '../../../../utils/screens';
-import { Input, Container, PrimaryButton } from '../../../../shared';
-import { putCategories } from '../../../../services';
-import { ActionEnum } from '../List';
+import {useRoute, useNavigation} from '@react-navigation/native';
+import {ListCategoriesProps} from '../../../../shared/ListItem';
+import {ScreensNames} from '../../../../utils/screens';
+import {Input, Container, PrimaryButton} from '../../../../shared';
+import {putCategories} from '../../../../services';
+import {ActionEnum} from '../List';
 
 type FormEdit = {
   name: string;
 };
 
 const Edit: FC = () => {
-  const { params } = useRoute();
+  const {params} = useRoute();
   const navigation = useNavigation();
 
   const valuesParams: ListCategoriesProps = (params as any).params;
@@ -41,18 +41,14 @@ const Edit: FC = () => {
   };
 
   return (
-    <Container style={{ flex: 1, justifyContent: 'flex-start' }}>
+    <Container style={styles.container}>
       <Formik
         initialValues={initialValues}
-        onSubmit={values => handleSubmitTaxesEdit(values)}
+        onSubmit={(values) => handleSubmitTaxesEdit(values)}
         validateOnMount={true}
         validationSchema={validationSchema}>
-        {({ handleChange, values, handleBlur, handleSubmit, errors }) => (
-          <View
-            style={{
-              justifyContent: 'space-between',
-              flex: 1,
-            }}>
+        {({handleChange, values, handleBlur, handleSubmit, errors}) => (
+          <View style={styles.form}>
             <Input
               label={t('categories:name')}
               placeholder="name"

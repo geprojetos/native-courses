@@ -1,9 +1,14 @@
-import {
-  StyleSheet
-} from 'react-native';
+import {StyleSheet} from 'react-native';
 
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    flex: 1,
+    justifyContent: 'flex-start',
+  },
+  form: {
+    justifyContent: 'space-between',
+    flex: 1,
+  },
 });
 
-export default styles
+export default styles;

@@ -17,3 +17,12 @@ export const putCategories = async (path: string, id: string, name: string) => {
     return error;
   }
 };
+
+export const postCategories = async (path: string, name: string) => {
+  try {
+    const response = await api.post(path, {name});
+    return response.data;
+  } catch (error) {
+    return error;
+  }
+};
