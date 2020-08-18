@@ -1,3 +1,8 @@
-import {getCategories, putCategories, postCategories} from './categories';
+import {
+  getCategories,
+  putCategories,
+  postCategories,
+  deleteCategorie,
+} from './categories';
 
-export {getCategories, putCategories, postCategories};
+export {getCategories, putCategories, postCategories, deleteCategorie};

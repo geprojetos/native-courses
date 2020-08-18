@@ -26,3 +26,12 @@ export const postCategories = async (path: string, name: string) => {
     return error;
   }
 };
+
+export const deleteCategorie = async (path: string, id: string) => {
+  try {
+    const response = await api.delete(`${path}/${id}`);
+    return response.data;
+  } catch (error) {
+    return error;
+  }
+};

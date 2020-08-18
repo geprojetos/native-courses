@@ -1,5 +1,7 @@
 {
   "name": "Name",
   "save": "Save",
-  "nameRequired": "Name is required"
+  "nameRequired": "Name is required",
+  "remove": "Remove",
+  "cancel": "Cancel"
 }

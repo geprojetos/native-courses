@@ -5,7 +5,6 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import styles from './styles';
 import {colors} from '../../utils/styles';
 import {t} from '../../i18n';
-import {useNavigation} from '@react-navigation/native';
 
 export interface ListCategoriesProps {
   _id: string;
@@ -16,26 +15,16 @@ export interface ListCategoriesProps {
 export interface ListItemProps {
   data: ListCategoriesProps[];
   icons?: boolean;
-  editNativateTo?: string;
+  onPressEdit?: (item: ListCategoriesProps) => void;
   onPressTrash?: (id: string) => void;
 }
 
 const ListItem: FC<ListItemProps> = ({
   data,
   icons,
-  editNativateTo,
+  onPressEdit,
   onPressTrash,
 }) => {
-  const navigation = useNavigation();
-
-  const handleOnPressEdit = (item: ListCategoriesProps) => {
-    editNativateTo
-      ? navigation.navigate(editNativateTo, {
-          params: item,
-        })
-      : navigation.isFocused();
-  };
-
   return (
     <View style={styles.container}>
       {data.length ? (
@@ -51,7 +40,7 @@ const ListItem: FC<ListItemProps> = ({
                 <View style={styles.flatIconsWrapper}>
                   <TouchableOpacity
                     style={styles.flatTouch}
-                    onPress={() => handleOnPressEdit(item)}>
+                    onPress={() => onPressEdit && onPressEdit(item)}>
                     <Icon name="edit" color={colors.BLUE_SECONDARY} size={24} />
                   </TouchableOpacity>
                   <TouchableOpacity
