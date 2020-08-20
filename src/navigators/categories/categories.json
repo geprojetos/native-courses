@@ -3,5 +3,6 @@
   "save": "Save",
   "nameRequired": "Name is required",
   "remove": "Remove",
-  "cancel": "Cancel"
+  "cancel": "Cancel",
+  "removeConfirm": "Really want to remove?"
 }

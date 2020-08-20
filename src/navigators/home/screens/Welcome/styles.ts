@@ -12,17 +12,6 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 10,
   },
-  title: {
-    color: colors.BLUE_PRIMARY,
-    fontSize: 40,
-    textAlign: 'center',
-    marginBottom: 10,
-  },
-  description: {
-    color: colors.BLUE_PRIMARY,
-    fontSize: 16,
-    lineHeight: 22,
-  },
   logoWrapper: {
     justifyContent: 'center',
     alignItems: 'center',

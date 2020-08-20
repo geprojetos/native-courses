@@ -9,7 +9,7 @@ import {colors} from '../../../../utils/styles';
 import {ScreensNames} from '../../../../utils/screens';
 import styles from './styles';
 import ListItem, {ListCategoriesProps} from '../../../../shared/ListItem';
-import {Container, PrimaryButton} from '../../../../shared';
+import {Container, PrimaryButton, Title} from '../../../../shared';
 import {t} from '../../../../i18n';
 
 export enum ActionEnum {
@@ -92,16 +92,32 @@ const List: FC = ({route}: any) => {
         </>
       )}
 
-      <Modalize ref={modalizeRef} snapPoint={180}>
+      <Modalize ref={modalizeRef} snapPoint={150}>
         <Container>
-          <PrimaryButton
-            text={t('categories:remove')}
-            onPress={handleRemoveCategorie}
-          />
-          <PrimaryButton
-            text={t('categories:cancel')}
-            onPress={() => modalizeRef.current?.close()}
-          />
+          <Title title={t('categories:removeConfirm')} size={24} />
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'flex-end',
+              height: 80,
+            }}>
+            <View style={{flex: 1, marginRight: 15}}>
+              <PrimaryButton
+                bkg={colors.RED_PRIMARY}
+                borderColor={colors.RED_PRIMARY}
+                text={t('categories:remove')}
+                onPress={handleRemoveCategorie}
+              />
+            </View>
+            <View style={{flex: 1}}>
+              <PrimaryButton
+                bkg={colors.WHITE_PRIMARY}
+                color={colors.BLUE_PRIMARY}
+                text={t('categories:cancel')}
+                onPress={() => modalizeRef.current?.close()}
+              />
+            </View>
+          </View>
         </Container>
       </Modalize>
     </Container>

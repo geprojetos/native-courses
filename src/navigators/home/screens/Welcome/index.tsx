@@ -5,7 +5,7 @@ import {useNavigation} from '@react-navigation/native';
 import {t} from '../../../../i18n';
 import styles from './styles';
 import {ScreensNames} from '../../../../utils/screens';
-import {PrimaryButton, Container} from '../../../../shared';
+import {PrimaryButton, Container, Title, Paragraph} from '../../../../shared';
 
 const Welcome: FC = () => {
   const navigation = useNavigation();
@@ -15,8 +15,8 @@ const Welcome: FC = () => {
   return (
     <View style={styles.container}>
       <Container>
-        <Text style={styles.title}>{t('common:title')}</Text>
-        <Text style={styles.description}>{t('common:description')}</Text>
+        <Title title={t('common:title')} />
+        <Paragraph text={t('common:description')} />
       </Container>
 
       <Container>

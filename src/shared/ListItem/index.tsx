@@ -26,7 +26,7 @@ const ListItem: FC<ListItemProps> = ({
   onPressTrash,
 }) => {
   return (
-    <View style={styles.container}>
+    <View>
       {data.length ? (
         <FlatList
           data={data}

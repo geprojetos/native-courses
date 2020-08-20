@@ -5,16 +5,25 @@ import styles from './styles';
 
 export interface PrimaryButtonProps {
   text: string;
+  bkg?: string;
+  color?: string;
+  borderColor?: string;
   onPress?: () => void;
 }
 
-const PrimaryButton: FC<PrimaryButtonProps> = ({text, onPress}) => {
+const PrimaryButton: FC<PrimaryButtonProps> = ({
+  text,
+  bkg,
+  color,
+  borderColor,
+  onPress,
+}) => {
   return (
     <TouchableOpacity
       activeOpacity={0.9}
       onPress={onPress}
-      style={styles.button}>
-      <Text style={styles.buttonText}>{text}</Text>
+      style={styles(bkg, color, borderColor).button}>
+      <Text style={styles(bkg, color, borderColor).buttonText}>{text}</Text>
     </TouchableOpacity>
   );
 };

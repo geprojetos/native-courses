@@ -2,7 +2,6 @@ import {StyleSheet} from 'react-native';
 import {colors} from '../../utils/styles';
 
 const styles = StyleSheet.create({
-  container: {},
   flat: {
     flexDirection: 'row',
     justifyContent: 'space-between',
@@ -10,38 +9,42 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: colors.BLUE_PRIMARY,
     padding: 10,
-    marginBottom: 5
+    marginBottom: 5,
+    height: 50,
   },
   flatTextWrapper: {
     maxWidth: '70%',
-    overflow: 'hidden'
+    overflow: 'hidden',
   },
   flatText: {
     color: colors.WHITE_PRIMARY,
     fontSize: 16,
-    lineHeight: 22
+    lineHeight: 22,
   },
   flatIconsWrapper: {
-    flexDirection: 'row'
+    flexDirection: 'row',
   },
   flatTouch: {
     backgroundColor: colors.WHITE_PRIMARY,
     borderRadius: 10,
-    padding: 8
+    width: 35,
+    height: 35,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   flatTouchTrash: {
-    marginLeft: 5
+    marginLeft: 10,
   },
   notItems: {
     flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   notItemsText: {
     color: colors.BLUE_PRIMARY,
     fontSize: 22,
-    textAlign: 'center'
-  }
+    textAlign: 'center',
+  },
 });
 
 export default styles;
