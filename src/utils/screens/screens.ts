@@ -3,4 +3,5 @@ export enum ScreensNames {
   listCategories = 'List Categories',
   editCategories = 'Edit Categories',
   addCategories = 'Add Categories',
+  listCourses = 'List Courses',
 }

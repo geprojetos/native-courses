@@ -13,15 +13,17 @@ export interface ListCategoriesProps {
   updatedAt: string;
 }
 export interface ListItemProps {
-  data: ListCategoriesProps[];
+  data: any[];
   icons?: boolean;
-  onPressEdit?: (item: ListCategoriesProps) => void;
+  messageNotData?: string;
+  onPressEdit?: (item: any) => void;
   onPressTrash?: (id: string) => void;
 }
 
 const ListItem: FC<ListItemProps> = ({
   data,
   icons,
+  messageNotData,
   onPressEdit,
   onPressTrash,
 }) => {
@@ -59,7 +61,9 @@ const ListItem: FC<ListItemProps> = ({
         />
       ) : (
         <View style={styles.notItems}>
-          <Text style={styles.notItemsText}>{t('common:description')}</Text>
+          <Text style={styles.notItemsText}>
+            {messageNotData ? messageNotData : ''}
+          </Text>
         </View>
       )}
     </View>

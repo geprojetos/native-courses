@@ -6,9 +6,9 @@ import {
 } from '@react-navigation/stack';
 
 // imports
+import coursesScreens from './courses';
 import categoriesScreens from './categories';
 import homeScreens from './home';
-import {Text} from 'react-native';
 
 export type appNagivatorProps = {
   name: string;
@@ -19,7 +19,8 @@ export type appNagivatorProps = {
 const appNagivator: appNagivatorProps = [
   // exports
   ...homeScreens,
-  ...categoriesScreens
+  ...categoriesScreens,
+  ...coursesScreens,
 ];
 
 const Stack = createStackNavigator();

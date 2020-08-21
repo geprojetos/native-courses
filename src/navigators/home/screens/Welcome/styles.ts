@@ -7,10 +7,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignContent: 'center',
   },
-  headerWrapper: {
-    backgroundColor: colors.WHITE_PRIMARY,
-    padding: 10,
-    borderRadius: 10,
+  header: {
+    marginBottom: 30,
+    alignSelf: 'center',
   },
   logoWrapper: {
     justifyContent: 'center',

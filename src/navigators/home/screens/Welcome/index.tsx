@@ -10,16 +10,21 @@ import {PrimaryButton, Container, Title, Paragraph} from '../../../../shared';
 const Welcome: FC = () => {
   const navigation = useNavigation();
 
-  const handleNavigationCategories = () =>
+  const handleNavigationCategories = () => {
     navigation.navigate(ScreensNames.listCategories);
+  };
+
+  const handleNavigationCourses = () => {
+    navigation.navigate(ScreensNames.listCourses);
+  };
+
   return (
     <View style={styles.container}>
       <Container>
-        <Title title={t('common:title')} />
-        <Paragraph text={t('common:description')} />
-      </Container>
-
-      <Container>
+        <View style={styles.header}>
+          <Title title={t('home:title')} />
+          <Paragraph text={t('home:description')} />
+        </View>
         <View style={styles.logoWrapper}>
           <Image
             source={require('../../../../assets/icons/logo.png')}
@@ -35,8 +40,8 @@ const Welcome: FC = () => {
           </View>
           <View style={styles.button}>
             <PrimaryButton
-              text={t('home:buttonCategories')}
-              onPress={handleNavigationCategories}
+              text={t('home:buttonCourses')}
+              onPress={handleNavigationCourses}
             />
           </View>
         </View>

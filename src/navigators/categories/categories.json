@@ -4,5 +4,6 @@
   "nameRequired": "Name is required",
   "remove": "Remove",
   "cancel": "Cancel",
-  "removeConfirm": "Really want to remove?"
+  "removeConfirm": "Really want to remove?",
+  "notListCategories": "You don't have any registered categories yet"
 }

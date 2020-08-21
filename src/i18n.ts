@@ -1,6 +1,7 @@
 import i18next from 'i18next';
 import {
   // imports
+  courses,
   categories,
   home,
   common,
@@ -14,6 +15,7 @@ i18next.init({
   resources: {
     en: {
       // en
+      courses,
       categories,
       home,
       common

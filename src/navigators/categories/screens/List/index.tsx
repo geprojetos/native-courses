@@ -88,6 +88,7 @@ const List: FC = ({route}: any) => {
             icons={true}
             onPressEdit={(item) => handleNavigateEdit(item)}
             onPressTrash={(id) => handleOnOpenActionSheet(id)}
+            messageNotData={t('categories:notListCategories')}
           />
         </>
       )}
