@@ -8,12 +8,19 @@ import {getCategories, deleteCategorie} from '../../../../services';
 import {colors} from '../../../../utils/styles';
 import {ScreensNames} from '../../../../utils/screens';
 import styles from './styles';
-import ListItem, {ListCategoriesProps} from '../../../../shared/ListItem';
+import ListItem from '../../../../shared/ListItem';
 import {Container, PrimaryButton, Title} from '../../../../shared';
 import {t} from '../../../../i18n';
 
 export enum ActionEnum {
   update = 'update',
+}
+
+export interface ListCategoriesProps {
+  _id: string;
+  name: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
 const List: FC = ({route}: any) => {
@@ -84,6 +91,7 @@ const List: FC = ({route}: any) => {
             <Icon name="plus-circle" color={colors.GREEN_PRIMARY} size={34} />
           </TouchableOpacity>
           <ListItem
+            categories={true}
             data={categories}
             icons={true}
             onPressEdit={(item) => handleNavigateEdit(item)}

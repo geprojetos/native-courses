@@ -6,11 +6,10 @@ import * as Yup from 'yup';
 import {t} from '../../../../i18n';
 import styles from './styles';
 import {useRoute, useNavigation} from '@react-navigation/native';
-import {ListCategoriesProps} from '../../../../shared/ListItem';
 import {ScreensNames} from '../../../../utils/screens';
 import {Input, Container, PrimaryButton} from '../../../../shared';
 import {putCategories} from '../../../../services';
-import {ActionEnum} from '../List';
+import {ActionEnum, ListCategoriesProps} from '../List';
 
 type FormEdit = {
   name: string;
