@@ -9,8 +9,10 @@ import {Modalize} from 'react-native-modalize';
 import {colors} from '../../../../utils/styles';
 import {getCourses} from '../../../../services';
 import {ActionEnum} from '../../../categories/screens/List';
+import {useNavigation} from '@react-navigation/native';
+import {ScreensNames} from '../../../../utils/screens';
 
-type CoursesType = {
+export type CoursesType = {
   result: {
     docs: CoursesDocs[];
     totalDocs: number;
@@ -25,7 +27,7 @@ type CoursesType = {
   };
 };
 
-type CoursesDocs = {
+export type CoursesDocs = {
   _id: string;
   idCategory: {
     _id: string;
@@ -58,6 +60,7 @@ const initialValues = {
 };
 
 const List: FC<ListProps> = ({route}: any) => {
+  const navigation = useNavigation();
   const [error, setError] = useState('');
   const [courses, setCourses] = useState<CoursesType>(initialValues);
   const modalizeRef = useRef<Modalize>(null);
@@ -66,8 +69,10 @@ const List: FC<ListProps> = ({route}: any) => {
     return;
   };
 
-  const handleNavigateEdit = (id: string) => {
-    return id;
+  const handleNavigateEdit = (item: CoursesDocs) => {
+    navigation.navigate(ScreensNames.editCourses, {
+      params: item,
+    });
   };
 
   const handleOnOpenActionSheet = (item: any) => {

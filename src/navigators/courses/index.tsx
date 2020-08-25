@@ -1,11 +1,16 @@
 // imports
+import Edit from './screens/Edit';
 import List from './screens/List';
 import {ScreensNames} from '../../utils/screens';
 import {headerOptions} from '../header.constant';
 
 const coursesScreens = [
   // export
-
+  {
+    name: ScreensNames.editCourses,
+    component: Edit,
+    options: headerOptions.backDefault,
+  },
   {
     name: ScreensNames.listCourses,
     component: List,

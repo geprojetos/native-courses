@@ -7,7 +7,6 @@ const styles = (color?: string) =>
       color: color ? color : colors.BLUE_PRIMARY,
       fontSize: 16,
       lineHeight: 22,
-      marginTop: 10,
     },
   });
 

@@ -12,6 +12,9 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     height: 50,
   },
+  flatCourses: {
+    height: 'auto',
+  },
   flatTextWrapper: {
     maxWidth: '70%',
     overflow: 'hidden',

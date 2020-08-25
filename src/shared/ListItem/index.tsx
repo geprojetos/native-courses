@@ -4,6 +4,10 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 
 import styles from './styles';
 import {colors} from '../../utils/styles';
+import Title from '../Title';
+import {CoursesDocs} from '../../navigators/courses/screens/List';
+import PrimaryButton from '../PrimaryButton';
+import Paragraph from '../Paragraph';
 
 export interface ListItemProps {
   data: any;
@@ -60,12 +64,22 @@ const ListItem: FC<ListItemProps> = ({
         <FlatList
           data={data.result.docs}
           renderItem={({item}) => (
-            <View style={styles.flat} key={item._id}>
+            <View style={[styles.flat, styles.flatCourses]} key={item._id}>
               <View style={styles.flatTextWrapper}>
-                <Text style={styles.flatText}>{item.name}</Text>
-              </View>
-              <View style={styles.flatTextWrapper}>
-                <Text style={styles.flatText}>{item.description}</Text>
+                <View
+                  style={{
+                    alignItems: 'flex-start',
+                  }}>
+                  <Title
+                    size={20}
+                    title={item.name}
+                    color={colors.WHITE_PRIMARY}
+                  />
+                  <Paragraph
+                    text={item.description}
+                    color={colors.WHITE_PRIMARY}
+                  />
+                </View>
               </View>
 
               {icons && (

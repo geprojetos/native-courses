@@ -1,26 +1,26 @@
 import i18next from 'i18next';
 import {
   // imports
-  courses,
+  courses,
   categories,
-  home,
+  home,
   common,
 } from './translations/translations';
 
 i18next.init({
   interpolation: {
-    escapeValue: false
+    escapeValue: false,
   },
   lng: 'en',
   resources: {
     en: {
       // en
-      courses,
+      courses,
       categories,
-      home,
-      common
-    }
-  }
+      home,
+      common,
+    },
+  },
 });
 
 function t(key: string, options?: any) {
