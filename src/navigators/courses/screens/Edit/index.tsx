@@ -1,5 +1,5 @@
-import React, {FC} from 'react';
-import {View} from 'react-native';
+import React, {FC, useEffect, useState} from 'react';
+import {View, Picker} from 'react-native';
 import {Formik} from 'formik';
 import {RouteProp, useNavigation} from '@react-navigation/native';
 import {object, string} from 'yup';
@@ -8,8 +8,12 @@ import {t} from '../../../../i18n';
 import styles from './styles';
 import {Container, PrimaryButton, Input} from '../../../../shared';
 import {ScreensNames} from '../../../../utils/screens';
-import {ActionEnum} from '../../../categories/screens/List';
+import {
+  ActionEnum,
+  ListCategoriesProps,
+} from '../../../categories/screens/List';
 import {CoursesDocs} from '../List';
+import {getCategories} from '../../../../services';
 
 type FormEdit = {
   _id: string;
@@ -38,6 +42,11 @@ const Edit: FC<EditProps> = ({route}) => {
     description: valuesParams.description,
   };
 
+  const [categories, setCategories] = useState<ListCategoriesProps[]>([]);
+  const [pickerSelect, setPickerSelect] = useState(
+    initialValues.idCategory._id,
+  );
+
   const validationSchema = object().shape({
     name: string().required(t('courses:nameRequired')),
     description: string().required(t('courses:descriptionRequired')),
@@ -53,6 +62,15 @@ const Edit: FC<EditProps> = ({route}) => {
     // });
   };
 
+  const listCategories = async () => {
+    const response = await getCategories('/categories');
+    setCategories(response);
+  };
+
+  useEffect(() => {
+    listCategories();
+  }, []);
+
   return (
     <Container style={styles.container}>
       <Formik
@@ -63,6 +81,22 @@ const Edit: FC<EditProps> = ({route}) => {
         {({handleChange, values, handleBlur, handleSubmit, errors}) => (
           <View style={styles.form}>
             <View>
+              <Picker
+                onValueChange={(item, index) => {
+                  values.idCategory._id = item;
+                  setPickerSelect(item);
+                }}
+                selectedValue={pickerSelect}>
+                <Picker.Item value="" label="Selecione um valor" />
+                {categories.length > 0 &&
+                  categories.map((item) => (
+                    <Picker.Item
+                      key={item._id}
+                      value={item._id}
+                      label={item.name}
+                    />
+                  ))}
+              </Picker>
               <Input
                 label={t('courses:name')}
                 placeholder="name"
