@@ -3,6 +3,9 @@ import {StyleSheet} from 'react-native';
 import {colors} from '../../utils/styles';
 
 const styles = StyleSheet.create({
+  group: {
+    marginBottom: 15,
+  },
   label: {
     color: colors.BLUE_PRIMARY,
     fontWeight: '600',

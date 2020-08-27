@@ -1,4 +1,8 @@
 {
   "courses": "Courses",
-  "notListCourses": "You don't have any registered courses yet"
+  "notListCourses": "You don't have any registered courses yet",
+  "categorie": "Categorie",
+  "categorieRequired": "Categorie is required",
+  "nameRequired": "Name is required",
+  "descriptionRequired": "Description is required"
 }

@@ -15,6 +15,9 @@ const styles = (bkg?: string, color?: string, borderColor?: string) =>
     buttonText: {
       color: color ? color : colors.WHITE_PRIMARY,
     },
+    disabled: {
+      backgroundColor: colors.BLUE_DISABLED,
+    },
   });
 
 export default styles;

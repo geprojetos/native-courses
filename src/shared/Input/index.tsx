@@ -10,7 +10,7 @@ export interface InputProps extends TextInputProps {
 
 const Input: FC<InputProps> = ({label, error, ...props}) => {
   return (
-    <View>
+    <View style={styles.group}>
       {label && <Text style={styles.label}>{label}</Text>}
       <TextInput {...props} style={styles.input} />
       {error && <Text style={styles.error}>{error}</Text>}

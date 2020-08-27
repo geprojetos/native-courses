@@ -1,5 +1,5 @@
 import React, {FC, useEffect, useState} from 'react';
-import {View, Picker} from 'react-native';
+import {View, Picker, Text} from 'react-native';
 import {Formik} from 'formik';
 import {RouteProp, useNavigation} from '@react-navigation/native';
 import {object, string} from 'yup';
@@ -21,6 +21,7 @@ type FormEdit = {
     _id: string;
     name: string;
   };
+  categorie?: string;
   name: string;
   description: string;
 };
@@ -46,8 +47,10 @@ const Edit: FC<EditProps> = ({route}) => {
   const [pickerSelect, setPickerSelect] = useState(
     initialValues.idCategory._id,
   );
+  const [errorPicker, setErrorPicker] = useState(false);
 
   const validationSchema = object().shape({
+    category: string().required(t('courses:categorieRequired')),
     name: string().required(t('courses:nameRequired')),
     description: string().required(t('courses:descriptionRequired')),
   });
@@ -78,25 +81,43 @@ const Edit: FC<EditProps> = ({route}) => {
         onSubmit={(values) => handleSubmitTaxesEdit(values)}
         validateOnMount={true}
         validationSchema={validationSchema}>
-        {({handleChange, values, handleBlur, handleSubmit, errors}) => (
+        {({
+          handleChange,
+          values,
+          handleBlur,
+          handleSubmit,
+          errors,
+          isValid,
+        }) => (
           <View style={styles.form}>
             <View>
-              <Picker
-                onValueChange={(item, index) => {
-                  values.idCategory._id = item;
-                  setPickerSelect(item);
-                }}
-                selectedValue={pickerSelect}>
-                <Picker.Item value="" label="Selecione um valor" />
-                {categories.length > 0 &&
-                  categories.map((item) => (
-                    <Picker.Item
-                      key={item._id}
-                      value={item._id}
-                      label={item.name}
-                    />
-                  ))}
-              </Picker>
+              <Text style={styles.label}>{t('courses:categorie')}</Text>
+              <View style={styles.group}>
+                <View style={styles.picker}>
+                  <Picker
+                    onValueChange={(item, index) => {
+                      values.idCategory._id = item;
+                      setPickerSelect(item);
+                      !item ? setErrorPicker(true) : setErrorPicker(false);
+                    }}
+                    selectedValue={pickerSelect}>
+                    <Picker.Item value="" label="Selecione um valor" />
+                    {categories.length > 0 &&
+                      categories.map((item) => (
+                        <Picker.Item
+                          key={item._id}
+                          value={item._id}
+                          label={item.name}
+                        />
+                      ))}
+                  </Picker>
+                </View>
+                {errorPicker && (
+                  <Text style={styles.error}>
+                    {t('courses:categorieRequired')}
+                  </Text>
+                )}
+              </View>
               <Input
                 label={t('courses:name')}
                 placeholder="name"
@@ -122,7 +143,11 @@ const Edit: FC<EditProps> = ({route}) => {
                 error={errors.description && errors.description}
               />
             </View>
-            <PrimaryButton text={t('categories:save')} onPress={handleSubmit} />
+            <PrimaryButton
+              text={t('categories:save')}
+              onPress={handleSubmit}
+              disabled={isValid}
+            />
           </View>
         )}
       </Formik>
