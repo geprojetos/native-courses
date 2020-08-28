@@ -13,7 +13,7 @@ import {
   ListCategoriesProps,
 } from '../../../categories/screens/List';
 import {CoursesDocs} from '../List';
-import {getCategories} from '../../../../services';
+import {getCategories, putCourses} from '../../../../services';
 
 type FormEdit = {
   _id: string;
@@ -50,19 +50,27 @@ const Edit: FC<EditProps> = ({route}) => {
   const [errorPicker, setErrorPicker] = useState(false);
 
   const validationSchema = object().shape({
-    category: string().required(t('courses:categorieRequired')),
     name: string().required(t('courses:nameRequired')),
     description: string().required(t('courses:descriptionRequired')),
   });
 
   const handleSubmitTaxesEdit = async (formValues: FormEdit) => {
-    // await putCategories('categories', valuesParams._id, formValues.name);
-    // navigation.navigate(ScreensNames.listCourses, {
-    //   screen: ScreensNames.listCourses,
-    //   params: {
-    //     status: ActionEnum.update,
-    //   },
-    // });
+    const response = await putCourses(
+      '/courses',
+      formValues._id,
+      formValues.idCategory._id,
+      formValues.name,
+      formValues.description,
+    );
+
+    if (response) {
+      navigation.navigate(ScreensNames.listCourses, {
+        screen: ScreensNames.listCourses,
+        params: {
+          status: ActionEnum.update,
+        },
+      });
+    }
   };
 
   const listCategories = async () => {
@@ -98,7 +106,7 @@ const Edit: FC<EditProps> = ({route}) => {
                     onValueChange={(item, index) => {
                       values.idCategory._id = item;
                       setPickerSelect(item);
-                      !item ? setErrorPicker(true) : setErrorPicker(false);
+                      item ? setErrorPicker(false) : setErrorPicker(true);
                     }}
                     selectedValue={pickerSelect}>
                     <Picker.Item value="" label="Selecione um valor" />
@@ -146,7 +154,7 @@ const Edit: FC<EditProps> = ({route}) => {
             <PrimaryButton
               text={t('categories:save')}
               onPress={handleSubmit}
-              disabled={isValid}
+              disabled={!isValid || errorPicker}
             />
           </View>
         )}

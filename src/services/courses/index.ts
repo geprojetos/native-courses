@@ -20,3 +20,24 @@ export const getCourses = async (
     return error;
   }
 };
+
+export const putCourses = async (
+  path: string,
+  id: string,
+  idCategory: string,
+  name: string,
+  description: string,
+) => {
+  try {
+    const response = await api.put(`${path}/${id}`, {
+      idCategory: {_id: idCategory},
+      // tslint:disable-next-line: object-shorthand-properties-first
+      name,
+      // tslint:disable-next-line: object-shorthand-properties-first
+      description,
+    });
+    return response.data;
+  } catch (error) {
+    return error;
+  }
+};

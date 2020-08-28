@@ -4,7 +4,7 @@ import {
   postCategories,
   deleteCategorie,
 } from './categories';
-import {getCourses} from './courses';
+import {getCourses, putCourses} from './courses';
 
 export {
   getCategories,
@@ -12,4 +12,5 @@ export {
   postCategories,
   deleteCategorie,
   getCourses,
+  putCourses,
 };
