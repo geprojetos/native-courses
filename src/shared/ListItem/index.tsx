@@ -5,8 +5,6 @@ import Icon from 'react-native-vector-icons/FontAwesome5';
 import styles from './styles';
 import {colors} from '../../utils/styles';
 import Title from '../Title';
-import {CoursesDocs} from '../../navigators/courses/screens/List';
-import PrimaryButton from '../PrimaryButton';
 import Paragraph from '../Paragraph';
 
 export interface ListItemProps {
@@ -16,7 +14,7 @@ export interface ListItemProps {
   categories?: boolean;
   courses?: boolean;
   onPressEdit?: (item: any) => void;
-  onPressTrash?: (id: string) => void;
+  onPressTrash?: (item: any) => void;
 }
 
 const ListItem: FC<ListItemProps> = ({

@@ -41,3 +41,12 @@ export const putCourses = async (
     return error;
   }
 };
+
+export const deleteCoruse = async (path: string, idCourse: string) => {
+  try {
+    const response = await api.delete(`${path}/${idCourse}`);
+    return response.data;
+  } catch (error) {
+    return error;
+  }
+};

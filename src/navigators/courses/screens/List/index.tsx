@@ -7,7 +7,7 @@ import styles from './styles';
 import {Container, ListItem, PrimaryButton, Title} from '../../../../shared';
 import {Modalize} from 'react-native-modalize';
 import {colors} from '../../../../utils/styles';
-import {getCourses} from '../../../../services';
+import {getCourses, deleteCoruse} from '../../../../services';
 import {ActionEnum} from '../../../categories/screens/List';
 import {useNavigation} from '@react-navigation/native';
 import {ScreensNames} from '../../../../utils/screens';
@@ -63,6 +63,7 @@ const List: FC<ListProps> = ({route}: any) => {
   const navigation = useNavigation();
   const [error, setError] = useState('');
   const [courses, setCourses] = useState<CoursesType>(initialValues);
+  const [idCourse, setIdCourse] = useState('');
   const modalizeRef = useRef<Modalize>(null);
 
   const handleNavigationAdd = () => {
@@ -75,12 +76,23 @@ const List: FC<ListProps> = ({route}: any) => {
     });
   };
 
-  const handleOnOpenActionSheet = (item: any) => {
-    return item;
+  const handleOnOpenActionSheet = (id: string) => {
+    setIdCourse(id);
+    modalizeRef.current?.open();
   };
 
-  const handleRemoveCategorie = () => {
-    return;
+  const handleRemoveCourse = async () => {
+    try {
+      const response = await deleteCoruse('/courses', idCourse);
+
+      if (response.success) {
+        route.params.params.status = ActionEnum.update;
+        updateListCourses();
+        modalizeRef.current?.close();
+      }
+    } catch (error) {
+      return error;
+    }
   };
 
   const get = async () => {
@@ -95,9 +107,16 @@ const List: FC<ListProps> = ({route}: any) => {
     }
   };
 
-  useEffect(() => {
+  const updateListCourses = () => {
     get();
-  }, [route.params?.params?.status]);
+    if (route?.params?.params.status === ActionEnum.update) {
+      route.params.params.status = '';
+    }
+  };
+
+  useEffect(() => {
+    updateListCourses();
+  }, [route.params?.params]);
 
   return (
     <Container style={{flex: 1, justifyContent: 'flex-start'}}>
@@ -115,7 +134,7 @@ const List: FC<ListProps> = ({route}: any) => {
             data={courses}
             icons={true}
             onPressEdit={(item) => handleNavigateEdit(item)}
-            onPressTrash={(id) => handleOnOpenActionSheet(id)}
+            onPressTrash={(item) => handleOnOpenActionSheet(item)}
             messageNotData={t('courses:notListCourses')}
           />
         </>
@@ -135,7 +154,7 @@ const List: FC<ListProps> = ({route}: any) => {
                 bkg={colors.RED_PRIMARY}
                 borderColor={colors.RED_PRIMARY}
                 text={t('categories:remove')}
-                onPress={handleRemoveCategorie}
+                onPress={handleRemoveCourse}
               />
             </View>
             <View style={{flex: 1}}>
