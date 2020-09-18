@@ -1,0 +1,6 @@
+projectKey=my:nativecourses
+serverUrl=http://localhost:9000
+serverVersion=8.3.1.34397
+dashboardUrl=http://localhost:9000/dashboard?id=my%3Anativecourses
+ceTaskId=AXMl7PphLxzExuorcm8B
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AXMl7PphLxzExuorcm8B

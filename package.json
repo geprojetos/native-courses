@@ -6,31 +6,91 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "start": "react-native start",
-    "test": "jest",
-    "lint": "eslint .",
+    "test": "jest --verbose",
+    "test:watch": "jest --watch",
+    "lint": "tslint --fix --project tsconfig.json",
     "check-types": "tsc",
-    "check-types:watch": "tsc --watch"
+    "check-types:watch": "tsc --watch",
+    "generate": "plop --plopfile generators/index.js",
+    "storybook": "start-storybook -p 7007",
+    "pre-commit": "npm run lint && npm run check-types"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run pre-commit",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   },
   "dependencies": {
+    "@react-native-community/masked-view": "^0.1.10",
+    "@react-navigation/native": "^5.5.1",
+    "@react-navigation/stack": "^5.5.1",
+    "axios": "^0.19.2",
+    "formik": "^2.1.5",
+    "i18next": "^19.6.2",
+    "install": "^0.13.0",
+    "npm": "^6.14.7",
     "react": "16.11.0",
-    "react-native": "0.62.2"
+    "react-i18next": "^11.7.0",
+    "react-native": "0.62.2",
+    "react-native-gesture-handler": "^1.7.0",
+    "react-native-modalize": "^2.0.5",
+    "react-native-reanimated": "^1.9.0",
+    "react-native-safe-area-context": "^3.1.1",
+    "react-native-screens": "^2.9.0",
+    "react-native-vector-icons": "^7.0.0",
+    "styled-components": "^5.1.1",
+    "yup": "^0.29.1"
   },
   "devDependencies": {
     "@babel/core": "^7.10.4",
+    "@babel/preset-react": "^7.10.4",
+    "@babel/preset-typescript": "^7.10.4",
     "@babel/runtime": "^7.10.4",
+    "@commitlint/cli": "^9.1.2",
+    "@commitlint/config-conventional": "^9.0.1",
     "@react-native-community/eslint-config": "^2.0.0",
+    "@storybook/addon-actions": "^5.3.19",
+    "@storybook/addon-info": "^5.3.19",
+    "@storybook/addon-links": "^5.3.19",
+    "@storybook/addons": "^5.3.19",
+    "@storybook/react-native": "^5.3.19",
+    "@storybook/react-native-server": "^5.3.19",
+    "@types/enzyme": "^3.10.5",
     "@types/jest": "^26.0.3",
     "@types/react": "^16.9.41",
     "@types/react-native": "^0.62.16",
+    "@types/react-native-vector-icons": "^6.4.5",
     "@types/react-test-renderer": "^16.9.2",
+    "@types/storybook__react": "^5.2.1",
+    "@types/styled-components": "^5.1.2",
+    "@types/yup": "^0.29.4",
     "babel-jest": "^26.1.0",
+    "babel-loader": "^8.1.0",
+    "cz-conventional-changelog": "^3.2.0",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.2",
     "eslint": "^7.4.0",
+    "husky": "^4.2.5",
     "jest": "^26.1.0",
+    "jest-sonar-reporter": "^2.0.0",
     "metro-react-native-babel-preset": "^0.60.0",
+    "plop": "^2.7.1",
+    "react-dom": "16.11.0",
     "react-test-renderer": "16.11.0",
-    "typescript": "^3.9.6"
+    "tslint": "^6.1.2",
+    "tslint-config-airbnb": "^5.11.2",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.1.6"
   },
-  "jest": {
-    "preset": "react-native"
+  "jestSonar": {
+    "reportPath": "coverage",
+    "reportFile": "clover.xml",
+    "indent": 4
   }
 }

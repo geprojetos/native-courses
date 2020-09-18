@@ -1,0 +1,13 @@
+import 'react-native';
+import React from 'react';
+import { mount } from 'enzyme';
+
+import {{pascalCase screen}} from './index';
+
+describe('[{{pascalCase screen}}], test', () => {
+  const wrapper = mount(<{{pascalCase screen}} />);
+
+  it('[{{pascalCase screen}}] renders correctly', () => {
+    expect(wrapper.exists()).toBeTruthy();
+  });
+})
