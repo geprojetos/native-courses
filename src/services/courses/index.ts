@@ -21,6 +21,20 @@ export const getCourses = async (
   }
 };
 
+export const postCourses = async (
+  path: string,
+  idCategory: string,
+  name: string,
+  description: string,
+) => {
+  try {
+    const response = await api.post(path, {idCategory, name, description});
+    return response.data;
+  } catch (error) {
+    return error;
+  }
+};
+
 export const putCourses = async (
   path: string,
   id: string,

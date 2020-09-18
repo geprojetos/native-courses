@@ -67,7 +67,7 @@ const List: FC<ListProps> = ({route}: any) => {
   const modalizeRef = useRef<Modalize>(null);
 
   const handleNavigationAdd = () => {
-    return;
+    navigation.navigate(ScreensNames.addCoruses);
   };
 
   const handleNavigateEdit = (item: CoursesDocs) => {

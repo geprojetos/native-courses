@@ -1,74 +1,64 @@
-import React, {FC, useEffect, useState} from 'react';
-import {View, Picker, Text} from 'react-native';
+import React, {FC, useState, useEffect} from 'react';
+import {View, Text, Picker} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 import {Formik} from 'formik';
-import {RouteProp, useNavigation} from '@react-navigation/native';
-import {object, string} from 'yup';
+import {string, object} from 'yup';
 
 import {t} from '../../../../i18n';
 import styles from './styles';
-import {Container, PrimaryButton, Input} from '../../../../shared';
-import {ScreensNames} from '../../../../utils/screens';
 import {
-  ActionEnum,
   ListCategoriesProps,
+  ActionEnum,
 } from '../../../categories/screens/List';
-import {CoursesDocs} from '../List';
-import {getCategories, putCourses} from '../../../../services';
+import {Container, Input, PrimaryButton} from '../../../../shared';
+import {getCategories, postCourses} from '../../../../services';
+import {ScreensNames} from '../../../../utils/screens';
 
-type FormEdit = {
-  _id: string;
+type FormAdd = {
   idCategory: {
     _id: string;
-    name: string;
   };
   name: string;
   description: string;
 };
 
-export interface EditProps {
-  route?: RouteProp<Record<string, object | undefined>, string>;
-}
-
-const Edit: FC<EditProps> = ({route}) => {
+const Add: FC = () => {
   const navigation = useNavigation();
-  const valuesParams: CoursesDocs = (route?.params as any).params;
   const initialValues = {
-    _id: valuesParams._id,
     idCategory: {
-      _id: valuesParams.idCategory._id,
-      name: valuesParams.idCategory.name,
+      _id: '',
     },
-    name: valuesParams.name,
-    description: valuesParams.description,
+    name: '',
+    description: '',
   };
 
   const [categories, setCategories] = useState<ListCategoriesProps[]>([]);
-  const [pickerSelect, setPickerSelect] = useState(
-    initialValues.idCategory._id,
-  );
-  const [errorPicker, setErrorPicker] = useState(false);
+  const [pickerSelect, setPickerSelect] = useState('');
+  const [errorPicker, setErrorPicker] = useState(true);
 
   const validationSchema = object().shape({
     name: string().required(t('courses:nameRequired')),
     description: string().required(t('courses:descriptionRequired')),
   });
 
-  const handleSubmitTaxesEdit = async (formValues: FormEdit) => {
-    const response = await putCourses(
-      '/courses',
-      formValues._id,
-      formValues.idCategory._id,
-      formValues.name,
-      formValues.description,
-    );
+  const handleSubmitTaxesAdd = async (formValues: FormAdd) => {
+    try {
+      const response = await postCourses(
+        '/courses',
+        formValues.idCategory._id,
+        formValues.name,
+        formValues.description,
+      );
 
-    if (response) {
-      navigation.navigate(ScreensNames.listCourses, {
-        screen: ScreensNames.listCourses,
-        params: {
-          status: ActionEnum.update,
-        },
-      });
+      if (response) {
+        navigation.navigate(ScreensNames.listCourses, {
+          params: {
+            status: ActionEnum.update,
+          },
+        });
+      }
+    } catch (error) {
+      return error;
     }
   };
 
@@ -85,8 +75,7 @@ const Edit: FC<EditProps> = ({route}) => {
     <Container style={styles.container}>
       <Formik
         initialValues={initialValues}
-        onSubmit={(values) => handleSubmitTaxesEdit(values)}
-        validateOnMount={true}
+        onSubmit={(values) => handleSubmitTaxesAdd(values)}
         validationSchema={validationSchema}>
         {({
           handleChange,
@@ -162,4 +151,4 @@ const Edit: FC<EditProps> = ({route}) => {
   );
 };
 
-export default Edit;
+export default Add;
